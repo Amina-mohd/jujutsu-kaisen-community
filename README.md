@@ -1,1 +1,1 @@
-# jujutsu-kaisen-community
+# Jujutsu kaisen Community Website
