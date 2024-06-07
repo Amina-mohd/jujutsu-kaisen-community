@@ -1,14 +1,28 @@
-﻿// JavaScript to toggle side-nav
+// JavaScript to toggle side-nav
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.hamburger-menu').addEventListener('click', function () {
+    document.querySelector('.hamburger-menu').addEventListener('click', function (event) {
         var navbar = document.getElementById('navbar');
         navbar.classList.toggle('nav-active'); // This line adds or removes the .nav-active class
+
+        // Stop propagation of the click event
+        event.stopPropagation();
     });
 
     // Toggle side-nav for close icon
-    document.querySelector('.close-menu').addEventListener('click', function () {
+    document.querySelector('.close-menu').addEventListener('click', function (event) {
         var navbar = document.getElementById('navbar');
         navbar.classList.toggle('nav-active');
+
+        // Stop propagation of the click event
+        event.stopPropagation();
+    });
+});
+
+// New code to navigate to full path on click events on .nav-link elements
+document.querySelectorAll('.nav-link').forEach(function (navLink) {
+    navLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default action
+        window.location.href = this.href; // Navigate to the full path of the href
     });
 });
 
@@ -140,114 +154,4 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.carousel-control.right').addEventListener('click', function () {
         slideCarousel('right');
     });
-});
-
-// Drag and drop image
-// Prevent default drag behaviors
-window.addEventListener("dragover", function (e) {
-    e.preventDefault();
-}, false);
-
-window.addEventListener("drop", function (e) {
-    e.preventDefault();
-}, false);
-
-// Global variable to store the selected file
-var selectedFile;
-
-// Handle files from the input and drag-drop events
-function handleFiles(files) {
-    // Store the first file in the global variable
-    selectedFile = files[0];
-}
-
-// Add event listeners to the drop area for drag & drop functionality
-var dropArea = document.getElementById('drop-area');
-
-dropArea.addEventListener('dragover', function (e) {
-    e.preventDefault();
-    dropArea.classList.add('highlight');
-}, false);
-
-dropArea.addEventListener('dragleave', function (e) {
-    dropArea.classList.remove('highlight');
-}, false);
-
-dropArea.addEventListener('drop', function (e) {
-    e.preventDefault();
-    dropArea.classList.remove('highlight');
-
-    // Get the files from the event
-    var files = e.dataTransfer.files;
-
-    // Call the handleFiles function
-    handleFiles(files);
-
-    // Loop through the files
-    for (let i = 0; i < files.length; i++) {
-        // Check if the file is an image
-        if (files[i].type.startsWith('image/')) {
-            // Create a new FileReader object
-            let reader = new FileReader();
-
-            // Define what happens when the file has been read
-            reader.onloadend = function () {
-                // Create a new image element
-                let img = document.createElement('img');
-
-                // Set the source of the image to the data URL of the file
-                img.src = reader.result;
-
-                // Append the image to the drop area
-                dropArea.appendChild(img);
-            }
-
-            // Read the file as a data URL
-            reader.readAsDataURL(files[i]);
-        }
-    }
-}, false);
-
-// Handle file selection via input element
-document.getElementById('fileElem').addEventListener('change', function () {
-    handleFiles(this.files);
-});
-
-// Upload file when form is submitted
-document.getElementById('upload-form').addEventListener('submit', function (e) {
-    // Check if a file is selected
-    if (!selectedFile) {
-        alert('Please select a file to upload.');
-        e.preventDefault();
-    } else {
-        let url = 'post.php';
-        let formData = new FormData();
-
-        // Append the file to FormData
-        formData.append('image', selectedFile);
-
-        // Append other form fields to FormData
-        formData.append('title', document.getElementById('title').value);
-        formData.append('content', document.getElementById('content').value);
-
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('File uploaded successfully!');
-                    // If there's a redirect URL, redirect the user
-                    if (data.redirect) {
-                        window.location.href = data.redirect;
-                    }
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
 });
