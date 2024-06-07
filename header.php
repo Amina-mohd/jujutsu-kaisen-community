@@ -33,21 +33,21 @@ include 'connect.php';
             </div>
 
             <!--Navigation links-->
-            <a class="nav-link" href="#home">
+            <a class="nav-link" href="http://localhost/Jujutsu%20kaisen/blog_web/jjk_blog/index.php#home">
                 <div class="nav-img-container">
                     <img class="nav-img" src="images/mark (edit).png" alt="Home">
                     <span class="nav-text">Home</span>
                 </div>
             </a>
             
-            <a class="nav-link" href="#story">
+            <a class="nav-link" href="http://localhost/Jujutsu%20kaisen/blog_web/jjk_blog/index.php#story">
                 <div class="nav-img-container">
                     <img class="nav-img" src="images/mark (edit).png" alt="Story">
                     <span class="nav-text">Story</span>
                 </div>
             </a>
             
-            <a class="nav-link" href="#characters">
+            <a class="nav-link" href="http://localhost/Jujutsu%20kaisen/blog_web/jjk_blog/index.php#characters">
                 <div class="nav-img-container">
                     <img class="nav-img" src="images/mark (edit).png" alt="Characters">
                     <span class="nav-text">Characters</span>
