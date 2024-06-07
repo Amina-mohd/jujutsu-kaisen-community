@@ -7,7 +7,7 @@ include 'connect.php';
 // Google OAuth credentials
 $google_oauth_client_id = '444567349697-tc5i2drkkkfako4t5pqiiu10obpqu9qh.apps.googleusercontent.com';
 $google_oauth_client_secret = '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';
-$google_oauth_redirect_uri = 'http://localhost/jujutsu-kaisen-community/google-oauth.php';
+$google_oauth_redirect_uri = 'https://localhost/jujutsu-kaisen-community/google-oauth.php';
 $google_oauth_version = 'v3';
 
 // If the user is not already logged in via Google and the code parameter is present
