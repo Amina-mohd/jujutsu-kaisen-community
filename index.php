@@ -149,24 +149,7 @@ include_once 'header.php';
             </div>
             
         </div>
-
-
-        <div id="media">
-           <!-- Media page content goes here -->
-        </div>
-
     </div>
-
-    <!-- 
-        <footer>
-        <div class="footer-content">
-            <p>© 2024 Jujutsu Kaisen Community. All rights reserved.</p>
-            <p>Contact us: <a href="mailto:aminamohd56348@gmail.com">contact@jjkcommunity.com</a></p>
-            <p>This website is created for educational purposes and is not officially affiliated with the creators of Jujutsu Kaisen.</p>
-        </div>
-    </footer>
-
-     -->
 
     <footer class="footer">
         <div class="footer-container">
